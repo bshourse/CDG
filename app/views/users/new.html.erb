@@ -2,15 +2,10 @@
   <div class="container">
     <%= form_for(@user) do |f| %>
       <div class="field">
-        <label>Name</label>
-        <%= f.text_field :name, required: true %>
-        <label>Email</label>
-        <%= f.email_field :email %>
-        <label>Password</label>
-        <%= f.password_field  :password, required: true %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Create" %>
+        <%= f.text_field :name, :placeholder => "Name", required: true %>
+        <%= f.email_field :email, :placeholder => "Email" %>
+        <%= f.password_field  :password, :placeholder => "Password", required: true %>
+        <%= f.submit "Create", class: "btn-submit" %>
       </div>
       <% end %>
   </div>
