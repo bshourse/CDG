@@ -96,7 +96,7 @@ body {
 }
 
 /*      FORMS     */
-.login .container, .signup .container {
+.login .container, .signup .container, .edit .container, .show .container {
     width: 400px;
     margin: 250px 530px 50px;
 }

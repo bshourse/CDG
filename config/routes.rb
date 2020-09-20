@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   resources :users
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  delete '/login' => 'sessions#destroy', as: :user_logout
+  get '/profile' => 'users#show', as: :profile_dir
+  get '/profile/:id/edit' => 'users#edit', as: :user_edit
+  patch '/profile/:id' => 'users#update'
 end
