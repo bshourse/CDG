@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_194621) do
+ActiveRecord::Schema.define(version: 2020_09_22_194636) do
+
+  create_table "courses", force: :cascade do |t|
+    t.integer "day_id"
+    t.integer "dish_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["day_id"], name: "index_courses_on_day_id"
+    t.index ["dish_id"], name: "index_courses_on_dish_id"
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.string "weekday"
+    t.string "month"
+    t.string "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dishes", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
