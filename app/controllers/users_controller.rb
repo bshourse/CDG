@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :require_user, except: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/profile'
     else
-      redirect_to '/signup'
+      redirect_to root_path
     end
   end
 
