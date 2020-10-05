@@ -23,7 +23,7 @@ RSpec.feature "Users integration Tests", type: :feature do
   end
 
   context "Update user profile" do
-    let!(:user) {User.create(name: "Test", email: "test@gnu.com", password: "123")}
+    let!(:user) { User.create(name: "Test", email: "test@gnu.com", password: "123") }
     before(:each) do
       visit root_path
       within("form") do
@@ -51,6 +51,23 @@ RSpec.feature "Users integration Tests", type: :feature do
     end
       click_button "Update"
       expect(page).to have_field("Name")
+    end
+  end
+
+  context "Go to dashboard page" do
+    before(:each) do
+      visit root_path
+      within("form") do
+        fill_in "Name", with: "Test"
+        fill_in "Email", with: "test06@gnu.com"
+        fill_in "Password", with: "123"
+        click_button "Create"
+        visit dashboard_dir_path
+      end
+    end
+
+    scenario "We see a dashboard" do
+      expect(page).to have_link("Back to Profile")
     end
   end
 end
