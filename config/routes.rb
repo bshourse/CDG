@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get '/profile/:id/edit' => 'users#edit', as: :user_edit
   patch '/profile/:id' => 'users#update'
   get '/dashboard' => 'days#index', as: :dashboard_dir
+  get '/dashboard/:id' => 'days#show', as: :day
 end

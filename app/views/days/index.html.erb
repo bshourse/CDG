@@ -3,6 +3,7 @@
     <% @days.each do |day| %>
       <button>
         <%=day.weekday %>
+        <%= link_to "Show menu", day_path(day) %>
       </button>
       <% end %>
     <%= link_to "Back to Profile", profile_dir_path(@user), method: "get" %>
