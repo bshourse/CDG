@@ -1,0 +1,15 @@
+<% @dishes.each do |dish|%>
+  <div class="dish">
+    <div class="dish-name">
+      <h4><%= dish.name + ":"%></h4>
+      <%= dish.description %>
+    </div>
+  </div>
+<% end %>
+<%= link_to "Close", dashboard_dir_path, id: "closeLink" %>
+<script>
+    $('#closeLink').click(function(e) {
+        e.preventDefault();
+        $(this).parent().html("");
+    });
+</script>

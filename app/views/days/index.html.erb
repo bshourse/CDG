@@ -1,11 +1,10 @@
 <div class="days">
   <div class="container">
     <% @days.each do |day| %>
-      <button>
-        <%=day.weekday %>
-        <%= link_to "Show menu", day_path(day) %>
-      </button>
+      <div id="menuList">
+      <%= button_to day.weekday, day_path(day), remote: true, method: "get" %>
       <% end %>
+      </div>
     <%= link_to "Back to Profile", profile_dir_path(@user), method: "get" %>
   </div>
 </div>
