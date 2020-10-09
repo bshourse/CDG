@@ -8,6 +8,7 @@ class DaysController < ApplicationController
 
   def show
     @day = Day.find(params[:id])
+    @courses = @day.courses
     @dishes = @day.dishes
   end
 
