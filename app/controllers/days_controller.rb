@@ -6,4 +6,9 @@ class DaysController < ApplicationController
     @days = Day.all
   end
 
+  def show
+    @day = Day.find(params[:id])
+    @dishes = @day.dishes
+  end
+
 end
