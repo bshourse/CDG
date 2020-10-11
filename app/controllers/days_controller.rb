@@ -10,6 +10,7 @@ class DaysController < ApplicationController
     @day = Day.find(params[:id])
     @courses = @day.courses
     @dishes = @day.dishes
+    @order_item = current_order.order_items.new
   end
 
 end
