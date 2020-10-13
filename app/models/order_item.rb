@@ -1,6 +1,7 @@
 class OrderItem < ApplicationRecord
   belongs_to :dish
   belongs_to :order
+  belongs_to :user
   before_save :set_total
 
   def total

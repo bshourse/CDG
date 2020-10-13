@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
 
+  before_action :require_user
   before_action :set_order
 
   def create
@@ -21,7 +22,7 @@ class OrderItemsController < ApplicationController
   end
 
   private def order_params
-    params.require(:order_item).permit(:dish_id)
+    params.require(:order_item).permit(:dish_id ,:user_id)
   end
 
   def set_order

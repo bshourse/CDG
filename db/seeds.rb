@@ -5,22 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-a1 = Dish.create(name: "Green Salat", description: "Cucumbers, Tomatoes, Iceberg, Feta, Olive oil", image: "", course_name: "first course")
+a1 = Dish.create(name: "Green Salat", description: "Cucumbers, Tomatoes, Iceberg, Feta, Olive oil", image: "", course_name: "first course", price: 10)
 
-a2 = Dish.create(name: "New salat Boom", description: "Rad Papper, Sparja, Cucumber", image: "", course_name: "first course")
+a2 = Dish.create(name: "New salat Boom", description: "Rad Papper, Sparja, Cucumber", image: "", course_name: "first course",  price: 8)
 
-a3 = Dish.create(name: "Sparja Salat", description: "Sparja, Black Papper, Cucumber", image: "", course_name: "first course")
+a3 = Dish.create(name: "Sparja Salat", description: "Sparja, Black Papper, Cucumber", image: "", course_name: "first course",  price: 7)
 
-a4 = Dish.create(name: "Fried Potato", description: "Potato, Onion, Green, Oil", image: "", course_name: "main course")
+a4 = Dish.create(name: "Fried Potato", description: "Potato, Onion, Green, Oil", image: "", course_name: "main course",  price: 12)
 
-a5 = Dish.create(name: "Fish Salat", description: "Fish, Black Papper, Tomatoes, Green, Feta", image: "", course_name: "first course")
+a5 = Dish.create(name: "Fish Salat", description: "Fish, Black Papper, Tomatoes, Green, Feta", image: "", course_name: "first course",  price: 14.99)
 
-a6 = Dish.create(name: "Pizza", description: "Mozzarella, Parmesan, Cheddar, Cherry, Bell pepper", image: "", course_name: "main course")
+a6 = Dish.create(name: "Pizza", description: "Mozzarella, Parmesan, Cheddar, Cherry, Bell pepper", image: "", course_name: "main course",  price: 13.08)
 
-a7 = Dish.create(name: "Coffee Cappucino", description: "220 ml", image: "", course_name: "drink")
-a8 = Dish.create(name: "Coffee Latte", description: "300 ml", image: "", course_name: "drink")
-a9 = Dish.create(name: "Juice", description: "Orange, Apple, Papaya Banana, Strawberry", image: "", course_name: "drink")
-a10 = Dish.create(name: "Veg Stew", description: "Panner, Zucchini, Carrot, Onion, Tomatoes", image: "", course_name: "main course")
+a7 = Dish.create(name: "Coffee Cappucino", description: "220 ml", image: "", course_name: "drink",  price: 1.5)
+a8 = Dish.create(name: "Coffee Latte", description: "300 ml", image: "", course_name: "drink",  price: 2)
+a9 = Dish.create(name: "Juice", description: "Orange, Apple, Papaya Banana, Strawberry", image: "", course_name: "drink",  price: 2)
+a10 = Dish.create(name: "Veg Stew", description: "Panner, Zucchini, Carrot, Onion, Tomatoes", image: "", course_name: "main course",  price: 9)
 
 
 d1 = Day.create(weekday: "Monday", month: "September", year: "2020")
