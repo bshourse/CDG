@@ -9,4 +9,8 @@ class User < ApplicationRecord
     self.admin = true unless User.exists?
   end
 
+  def admin?
+    self.admin == true
+  end
+
 end
