@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   patch '/profile/:id' => 'users#update'
   get '/dashboard' => 'days#index', as: :dashboard_dir
   get '/dashboard/:id' => 'days#show', as: :day
+  resources :order_items
+  get 'cart' => 'cart#show'
 end

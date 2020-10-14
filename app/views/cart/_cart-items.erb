@@ -1,0 +1,9 @@
+<% @order_items.each do |item| %>
+  <h3><%= item.dish.name %></h3>
+  <h3><%= item.dish.price %></h3>
+  <%= form_with model: item do |f| %>
+    <%= f.hidden_field :dish_id, value: item.dish.id %>
+    <%= link_to "Remove Item", item, method: :delete, remote: true %>
+  <% end %>
+<% end %>
+<h3> Your current order has a total of: <%= current_order.subtotal %>$ </h3>

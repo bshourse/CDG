@@ -1,14 +1,61 @@
-<% @dishes.each do |dish|%>
-  <div class="dish">
-    <div class="dish-name">
-      <h4><%= dish.name + ":"%></h4>
-      <%= dish.description %>
+<% @courses.select("DISTINCT(NAME)").where("name = 'first course'").each do |course|%>
+  <h2><%= course.name + ":" %></h2>
+  <% @dishes.where("course_name = 'first course'").each do |dish|%>
+    <div class="dish-first">
+      <div class="dish-name-first-course">
+        <h4><%= dish.name + ":"%></h4>
+        <h4><%= dish.price %></h4>
+        <%= dish.description %>
+        <%= form_with model: @order_item do |f| %>
+          <%= f.hidden_field :dish_id, value: dish.id %>
+          <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.submit "Add to Order" %>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
+
+<% @courses.select("DISTINCT(NAME)").where("name = 'main course'").each do |course|%>
+  <h2><%= course.name + ":" %></h2>
+  <% @dishes.where("course_name = 'main course'").each do |dish|%>
+    <div class="dish-main">
+      <div class="dish-name-main-course">
+        <h4><%= dish.name + ":"%></h4>
+        <h4><%= dish.price %></h4>
+        <%= dish.description %>
+        <%= form_with model: @order_item do |f| %>
+          <%= f.hidden_field :dish_id, value: dish.id %>
+          <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.submit "Add to Order" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% @courses.select("DISTINCT(NAME)").where("name = 'drink'").each do |course|%>
+  <h2><%= course.name + ":" %></h2>
+  <% @dishes.where("course_name = 'drink'").each do |dish|%>
+    <div class="dish-drink">
+      <div class="dish-name-drink">
+        <h4><%= dish.name + ":"%></h4>
+        <h4><%= dish.price %></h4>
+        <%= dish.description %>
+        <%= form_with model: @order_item do |f| %>
+          <%= f.hidden_field :dish_id, value: dish.id %>
+          <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.submit "Add to Order" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
 <%= link_to "Close", dashboard_dir_path, id: "closeLink" %>
+<%= link_to "Check your shopping cart", cart_path %>
 <script>
-    $('#closeLink').click(function(e) {
+    $('#closeLink').refresh().click(function(e) {
         e.preventDefault();
         $(this).parent().html("");
     });
