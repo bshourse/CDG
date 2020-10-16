@@ -1,3 +1,11 @@
+<div class="user-orders">
+  <% if @current_user && @current_user.admin? %>
+  <p>Admin message: orders (order_id), making by users at <%= @day.weekday %>: </p>
+  <% @order_items.each do |i| %>
+    <%= i.order_id.to_s %>
+  <% end %>
+ <% end %>
+</div>
 <% @courses.select("DISTINCT(NAME)").where("name = 'first course'").each do |course|%>
   <h2><%= course.name + ":" %></h2>
   <% @dishes.where("course_name = 'first course'").each do |dish|%>
@@ -9,6 +17,7 @@
         <%= form_with model: @order_item do |f| %>
           <%= f.hidden_field :dish_id, value: dish.id %>
           <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.hidden_field :day_id, value: @day.id %>
           <%= f.submit "Add to Order" %>
         <% end %>
       </div>
@@ -27,6 +36,7 @@
         <%= form_with model: @order_item do |f| %>
           <%= f.hidden_field :dish_id, value: dish.id %>
           <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.hidden_field :day_id, value: @day.id %>
           <%= f.submit "Add to Order" %>
         <% end %>
       </div>
@@ -45,18 +55,20 @@
         <%= form_with model: @order_item do |f| %>
           <%= f.hidden_field :dish_id, value: dish.id %>
           <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.hidden_field :day_id, value: @day.id %>
           <%= f.submit "Add to Order" %>
         <% end %>
       </div>
     </div>
   <% end %>
 <% end %>
+  <%= link_to "Close", dashboard_dir_path, id: "closeLink" %>
+  <%= link_to "Check your shopping cart", cart_path %>
+  <script>
+      $('#closeLink').refresh().click(function(e) {
+          e.preventDefault();
+          $(this).parent().html("");
+      });
+  </script>
 
-<%= link_to "Close", dashboard_dir_path, id: "closeLink" %>
-<%= link_to "Check your shopping cart", cart_path %>
-<script>
-    $('#closeLink').refresh().click(function(e) {
-        e.preventDefault();
-        $(this).parent().html("");
-    });
-</script>
+
