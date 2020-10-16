@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_100315) do
+ActiveRecord::Schema.define(version: 2020_10_16_072315) do
 
   create_table "courses", force: :cascade do |t|
     t.integer "day_id"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_100315) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "day_id"
+    t.index ["day_id"], name: "index_order_items_on_day_id"
     t.index ["dish_id"], name: "index_order_items_on_dish_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["user_id"], name: "index_order_items_on_user_id"
@@ -67,5 +69,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_100315) do
     t.boolean "admin", default: false
   end
 
+  add_foreign_key "order_items", "days"
   add_foreign_key "order_items", "users"
 end

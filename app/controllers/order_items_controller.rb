@@ -22,7 +22,7 @@ class OrderItemsController < ApplicationController
   end
 
   private def order_params
-    params.require(:order_item).permit(:dish_id ,:user_id)
+    params.require(:order_item).permit(:dish_id ,:user_id, :day_id)
   end
 
   def set_order

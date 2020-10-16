@@ -2,6 +2,7 @@ class OrderItem < ApplicationRecord
   belongs_to :dish
   belongs_to :order
   belongs_to :user
+  belongs_to :day
   before_save :set_total
 
   def total
