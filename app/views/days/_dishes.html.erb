@@ -4,6 +4,7 @@
   <% @order_items.each do |i| %>
     <%= i.order_id.to_s %>
   <% end %>
+    <p><%= link_to "Add new dish", new_dish_path(id: @day) %></p>
  <% end %>
 </div>
 <% @courses.select("DISTINCT(NAME)").where("name = 'first course'").each do |course|%>

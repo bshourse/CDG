@@ -1,0 +1,17 @@
+<div class="new dish">
+  <%= form_for @dish do |d|  %>
+    <% if @dish.errors.any? %>
+      <% @dish.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%= msg %></div>
+      <% end %>
+    <% end %>
+  <%= d.text_field :name, :placeholder => "Dish name" %>
+  <%= d.text_area :description, :placeholder => "Description" %>
+  <%= d.text_field :price, :placeholder => "Dish price" %>
+  <%= d.text_field :course_name, :placeholder => "Course name" %>
+  <%= d.fields_for :courses do |c| %>
+      <%= c.hidden_field :day_id, value: @day.id %>
+  <%= d.submit "Save" %>
+</div>
+<% end %>
+<% end %>
