@@ -1,9 +1,10 @@
 <div class="user-orders">
   <% if @current_user && @current_user.admin? %>
   <p>Admin message: orders (order_id), making by users at <%= @day.weekday %>: </p>
-  <% @order_items.each do |i| %>
+    <% @order_items.select("DISTINCT(ORDER_ID)").each do |i| %>
     <%= i.order_id.to_s %>
   <% end %>
+    <p> Total sum of orders at <%= @day.weekday %>: <%= @order_items.sum(:total) %>$ </p>
     <p><%= link_to "Add new dish", new_dish_path(id: @day) %></p>
  <% end %>
 </div>
