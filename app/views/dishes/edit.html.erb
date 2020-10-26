@@ -1,0 +1,14 @@
+<div class="edit">
+  <div class="container">
+    <%= form_for @dish do |d| %>
+    <div class="field">
+    <%= d.text_field :name, :placeholder => "Dish Name" %>
+    <%= d.text_field :description, :placeholder => "Description" %>
+    <%= d.text_field :course_name, :placeholder => "Course name" %>
+    <%= d.text_field :price, :placeholder => "Price" %>
+    <%= d.file_field :image, :placeholder => "Choose Image" %>
+    <%= d.submit "Update" %>
+    </div>
+    <% end %>
+  </div>
+</div>

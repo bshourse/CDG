@@ -5,10 +5,11 @@
         <div class="alert alert-danger"><%= msg %></div>
       <% end %>
     <% end %>
-  <%= d.text_field :name, :placeholder => "Dish name" %>
+  <%= d.text_field :name, :placeholder => "Dish name", required: true %>
   <%= d.text_area :description, :placeholder => "Description" %>
-  <%= d.text_field :price, :placeholder => "Dish price" %>
-  <%= d.text_field :course_name, :placeholder => "Course name" %>
+  <%= d.text_field :price, :placeholder => "Dish price", required: true %>
+  <%= d.text_field :course_name, :placeholder => "Course name", required: true %>
+  <%= d.file_field :image, :placeholder => "Choose Image" %>
   <%= d.fields_for :courses do |c| %>
       <%= c.hidden_field :day_id, value: @day.id %>
   <%= d.submit "Save" %>
