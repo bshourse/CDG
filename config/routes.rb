@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/dashboard/:id' => 'days#show', as: :day
   resources :order_items
   get 'cart' => 'cart#show'
+  resources :dishes
 end
