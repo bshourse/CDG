@@ -13,4 +13,12 @@ Rails.application.routes.draw do
   resources :order_items
   get 'cart' => 'cart#show'
   resources :dishes
+
+  namespace :api do
+    namespace :v1 do
+      resources :days do
+        resources :order_items
+      end
+    end
+  end
 end
