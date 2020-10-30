@@ -1,15 +1,31 @@
-<div class="mx-auto" style="width: 500px;">
+<div class="mx-auto" style="width: 900px;">
       <div class="user-orders">
         <% if @current_user && @current_user.admin? %>
-        <p>Admin message: orders (order_id), making by users at <%= @day.weekday %>: </p>
+          Admin message: orders (order_id), making by users at <%= @day.weekday %>:
         <% @order_items.select("DISTINCT(ORDER_ID)").each do |i| %>
-        <%= i.order_id.to_s %>
+            <%= i.order_id.to_s %>
         <% end %>
-        <p> Total sum of orders at <%= @day.weekday %>: <%= @order_items.sum(:total) %>$ </p>
-        <p><%= link_to "Add new dish", new_dish_path(id: @day) %></p>
+         <h5>Total sum of orders at <%= @day.weekday %>: <%= @order_items.sum(:total) %>$</h5>
+        <%= link_to "Add new dish", new_dish_path(id: @day) %>
         <% end %>
       </div>
 </div>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <h5><%= link_to "Close", dashboard_dir_path, id: "closeLink" %>
+      <%= link_to "Check your shopping cart", cart_path %></h5>
+  <script>
+      $('#closeLink').refresh().click(function(e) {
+          e.preventDefault();
+          $(this).parent().html("");
+      });
+  </script>
+    </div>
+  </div>
+</div>
+
 
 <div class="container">
   <div class="row">
@@ -87,14 +103,5 @@
     </div>
   </div>
 </div>
-
-  <%= link_to "Close", dashboard_dir_path, id: "closeLink" %>
-  <%= link_to "Check your shopping cart", cart_path %>
-  <script>
-      $('#closeLink').refresh().click(function(e) {
-          e.preventDefault();
-          $(this).parent().html("");
-      });
-  </script>
 
 
