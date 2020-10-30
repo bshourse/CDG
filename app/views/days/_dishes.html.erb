@@ -1,75 +1,93 @@
-<div class="user-orders">
-  <% if @current_user && @current_user.admin? %>
-  <p>Admin message: orders (order_id), making by users at <%= @day.weekday %>: </p>
-    <% @order_items.select("DISTINCT(ORDER_ID)").each do |i| %>
-    <%= i.order_id.to_s %>
-  <% end %>
-    <p> Total sum of orders at <%= @day.weekday %>: <%= @order_items.sum(:total) %>$ </p>
-    <p><%= link_to "Add new dish", new_dish_path(id: @day) %></p>
- <% end %>
+<div class="mx-auto" style="width: 500px;">
+      <div class="user-orders">
+        <% if @current_user && @current_user.admin? %>
+        <p>Admin message: orders (order_id), making by users at <%= @day.weekday %>: </p>
+        <% @order_items.select("DISTINCT(ORDER_ID)").each do |i| %>
+        <%= i.order_id.to_s %>
+        <% end %>
+        <p> Total sum of orders at <%= @day.weekday %>: <%= @order_items.sum(:total) %>$ </p>
+        <p><%= link_to "Add new dish", new_dish_path(id: @day) %></p>
+        <% end %>
+      </div>
 </div>
-<% @courses.select("DISTINCT(NAME)").where("name = 'first course'").each do |course|%>
-  <h2><%= course.name + ":" %></h2>
-  <% @dishes.where("course_name = 'first course'").each do |dish|%>
-    <div class="dish-first">
-      <div class="dish-name-first-course">
-        <h4><%= dish.name + ":"%></h4>
-        <h4><%= dish.price %></h4>
-        <%= dish.description %>
-        <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
-        <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
-        <%= form_with model: @order_item do |f| %>
-          <%= f.hidden_field :dish_id, value: dish.id %>
-          <%= f.hidden_field :user_id, value: session[:user_id] %>
-          <%= f.hidden_field :day_id, value: @day.id %>
-          <%= f.submit "Add to Order" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
 
-<% @courses.select("DISTINCT(NAME)").where("name = 'main course'").each do |course|%>
-  <h2><%= course.name + ":" %></h2>
-  <% @dishes.where("course_name = 'main course'").each do |dish|%>
-    <div class="dish-main">
-      <div class="dish-name-main-course">
-        <h4><%= dish.name + ":"%></h4>
-        <h4><%= dish.price %></h4>
-        <%= dish.description %>
-        <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
-        <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
-        <%= form_with model: @order_item do |f| %>
-          <%= f.hidden_field :dish_id, value: dish.id %>
-          <%= f.hidden_field :user_id, value: session[:user_id] %>
-          <%= f.hidden_field :day_id, value: @day.id %>
-          <%= f.submit "Add to Order" %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <% @courses.select("DISTINCT(NAME)").where("name = 'first course'").each do |course|%>
+        <h2><%= course.name + ":" %></h2>
+        <% @dishes.where("course_name = 'first course'").each do |dish|%>
+          <div class="dish-first">
+            <div class="dish-name-first-course">
+              <h4><%= dish.name + ":"%></h4>
+              <h4><%= dish.price %></h4>
+              <%= dish.description %>
+              <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
+              <% if @current_user && @current_user.admin? %>
+              <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
+                <% end %>
+              <%= form_with model: @order_item do |f| %>
+                <%= f.hidden_field :dish_id, value: dish.id %>
+                <%= f.hidden_field :user_id, value: session[:user_id] %>
+                <%= f.hidden_field :day_id, value: @day.id %>
+                <%= f.submit "Add to Order" %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
+    <div class="col-sm">
+      <% @courses.select("DISTINCT(NAME)").where("name = 'main course'").each do |course|%>
+        <h2><%= course.name + ":" %></h2>
+        <% @dishes.where("course_name = 'main course'").each do |dish|%>
+          <div class="dish-main">
+            <div class="dish-name-main-course">
+              <h4><%= dish.name + ":"%></h4>
+              <h4><%= dish.price %></h4>
+              <%= dish.description %>
+              <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
+              <% if @current_user && @current_user.admin? %>
+              <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
+                <% end %>
+              <%= form_with model: @order_item do |f| %>
+                <%= f.hidden_field :dish_id, value: dish.id %>
+                <%= f.hidden_field :user_id, value: session[:user_id] %>
+                <%= f.hidden_field :day_id, value: @day.id %>
+                <%= f.submit "Add to Order" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm">
+      <% @courses.select("DISTINCT(NAME)").where("name = 'drink'").each do |course|%>
+        <h2><%= course.name + ":" %></h2>
+        <% @dishes.where("course_name = 'drink'").each do |dish|%>
+          <div class="dish-drink">
+            <div class="dish-name-drink">
+              <h4><%= dish.name + ":"%></h4>
+              <h4><%= dish.price %></h4>
+              <%= dish.description %>
+              <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
+              <% if @current_user && @current_user.admin? %>
+              <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
+                <% end %>
+              <%= form_with model: @order_item do |f| %>
+                <%= f.hidden_field :dish_id, value: dish.id %>
+                <%= f.hidden_field :user_id, value: session[:user_id] %>
+                <%= f.hidden_field :day_id, value: @day.id %>
+                <%= f.submit "Add to Order" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<% @courses.select("DISTINCT(NAME)").where("name = 'drink'").each do |course|%>
-  <h2><%= course.name + ":" %></h2>
-  <% @dishes.where("course_name = 'drink'").each do |dish|%>
-    <div class="dish-drink">
-      <div class="dish-name-drink">
-        <h4><%= dish.name + ":"%></h4>
-        <h4><%= dish.price %></h4>
-        <%= dish.description %>
-        <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
-        <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
-        <%= form_with model: @order_item do |f| %>
-          <%= f.hidden_field :dish_id, value: dish.id %>
-          <%= f.hidden_field :user_id, value: session[:user_id] %>
-          <%= f.hidden_field :day_id, value: @day.id %>
-          <%= f.submit "Add to Order" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
   <%= link_to "Close", dashboard_dir_path, id: "closeLink" %>
   <%= link_to "Check your shopping cart", cart_path %>
   <script>
