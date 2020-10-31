@@ -16,150 +16,22 @@
 
 @import "bootstrap/scss/bootstrap";
 
-* {
-    margin: 0;
-    padding: 0;
+.signin {
+  margin-top:200px;
 }
 
-body {
-    background: #A4A9B0;
-    color: 363636;
-    font-family: 'Roboto Slab', serif;
-    height: 100%;
-    width: 100%;
+.login {
+  margin-top:200px;
 }
 
-.dark {
-    color: #282828;
+.edit {
+  margin-top:200px;
 }
 
-/*    HEADER    */
-
-.header {
-    height: 200px;
-    position: relative;
+.show {
+  margin-top:200px;
 }
 
-.header h1 {
-    font-size: 72px;
-    height: 200px;
-    line-height: 200px;
-    margin: 0 50px 0;
+.newDish {
+  margin-top:200px;
 }
-
-.header a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.header a .dark {
-    color: #282828;
-}
-
-.nav ul {
-    list-style: none;
-    position: absolute;
-    right: 25px;
-    text-align: right;
-    text-transform: lowercase;
-    top: 25px;
-}
-
-.nav ul li {
-    display: inline-block;
-    font-weight: 300;
-}
-
-.nav ul li a, .btn a, form input.btn-submit {
-
-    color: #282828;
-    display: block;
-    min-width: 80px;
-    padding: 6px 20px;
-    text-align: center;
-    text-decoration: none;
-    transition: background 1s;
-}
-
-.nav ul li a:hover, .btn a:hover, form input.btn-submit:hover {
-    background: rgba(255,255,255,1);
-    cursor: pointer;
-    transition: background 1s;
-}
-
-#email {
-    margin: 0 20px;
-}
-
-.btn a {
-    display: block;
-    font-weight: 300;
-    margin: 0 0 4px;
-}
-
-/*      FORMS     */
-.login .container, .signup .container, .edit .container, .show .container {
-    width: 400px;
-    margin: 250px 530px 50px;
-}
-
-form input, form textarea {
-    border: 0;
-    border-bottom: 2px solid transparent;
-    font-family: 'Roboto Slab', serif;
-    font-size: 18px;
-    font-weight: 300;
-    margin: 0 0 4px;
-    padding: 5px 10px;
-    border-radius: 4px;
-
-    transition: border-bottom 1s;
-    width: calc(100% - 60px);
-}
-
-form input:focus, form textarea:focus {
-    border-bottom: 2px solid #536CB0;
-    box-shadow: 0 0;
-    outline: 0;
-    transition: border-bottom 1s;
-}
-
-form input.btn-submit {
-    width: 100%;
-}
-
-form input.btn-submit:focus {
-    border-bottom: 2px solid transparent;
-}
-
-form textarea {
-    min-height: 400px;
-}
-
-@media screen and (max-width: 520px) {
-    /*    HEADER    */
-    .header {
-        height: 180px;
-    }
-
-    .header h1 {
-        font-size: 40px;
-        height: 180px;
-        line-height: 180px;
-        margin: 0 30px 0;
-    }
-
-    .nav ul {
-        font-size: 13px;
-        right: 15px;
-        top: 15px;
-    }
-
-    .nav ul li a {
-        min-width: 45px;
-    }
-
-}
-
-
-
