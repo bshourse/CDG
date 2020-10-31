@@ -16,10 +16,14 @@
 
 @import "bootstrap/scss/bootstrap";
 
-.form-signin {
+body {
+  background: #A4A9B0;
+}
+
+.signin {
   margin-top:200px;
 }
 
-.form-login {
+.login {
   margin-top:200px;
 }
