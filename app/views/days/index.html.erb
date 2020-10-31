@@ -1,11 +1,9 @@
 <div class="days">
-  <div class="container">
     <% @days.each do |day| %>
       <div id="menuList">
-      <%= button_to day.weekday, day_path(day), remote: true, method: "get" %>
-      <% end %>
+        <%= button_to day.weekday, day_path(day), remote: true, class: "btn btn-secondary btn-sm btn-block", style: "width:300px", method: "get" %>
+          <h6></h6>
+        <% end %>
       </div>
     <%= link_to "Back to Profile", profile_dir_path(@user), method: "get" %>
   </div>
-</div>
-

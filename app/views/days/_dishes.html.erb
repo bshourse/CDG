@@ -36,9 +36,9 @@
           <div class="dish-first">
             <div class="dish-name-first-course">
               <h4><%= dish.name + ":"%></h4>
-              <h4><%= dish.price %></h4>
-              <%= dish.description %>
               <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
+              <h4><%= dish.price %>$</h4>
+              <%= dish.description %>
               <% if @current_user && @current_user.admin? %>
               <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
                 <% end %>
@@ -60,9 +60,9 @@
           <div class="dish-main">
             <div class="dish-name-main-course">
               <h4><%= dish.name + ":"%></h4>
-              <h4><%= dish.price %></h4>
-              <%= dish.description %>
               <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
+              <h4><%= dish.price %>$</h4>
+              <%= dish.description %>
               <% if @current_user && @current_user.admin? %>
               <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
                 <% end %>
@@ -84,9 +84,9 @@
           <div class="dish-drink">
             <div class="dish-name-drink">
               <h4><%= dish.name + ":"%></h4>
-              <h4><%= dish.price %></h4>
-              <%= dish.description %>
               <p><%= image_tag dish.image.url(:thumb), class: 'img-show' if dish.image? %></p>
+              <h4><%= dish.price %>$</h4>
+              <%= dish.description %>
               <% if @current_user && @current_user.admin? %>
               <p><%= link_to "Upload Photo", edit_dish_path(dish.id) %></p>
                 <% end %>
