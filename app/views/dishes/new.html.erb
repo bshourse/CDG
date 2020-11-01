@@ -5,9 +5,9 @@
         <%= form_for @dish do |d|  %>
           <% if @dish.errors.any? %>
             <% @dish.errors.full_messages.each do |msg| %>
-         <div class="alert alert-danger"><%= msg %></div>
-      <% end %>
-    <% end %>
+            <div class="alert alert-danger"><%= msg %></div>
+            <% end %>
+          <% end %>
 
       <div class="form-group">
         <%= d.text_field :name, :placeholder => "Dish name", class: "form-control", required: true %>
@@ -23,6 +23,9 @@
 
       <div class="form-group">
         <%= d.text_field :course_name, :placeholder => "Course name", class: "form-control", required: true %>
+        <small class="form-text text-muted">
+          Course name should be: first course / main course / drink
+        </small>
       </div>
 
       <div class="form-group">
@@ -30,7 +33,7 @@
       </div>
 
         <%= d.fields_for :courses do |c| %>
-        <%= c.hidden_field :day_id, value: @day.id %>
+        <%= c.hidden_field :day_id, value: $day.id %>
 
       <div class="actions">
         <%= d.submit "Save", class: "btn btn-primary" %>

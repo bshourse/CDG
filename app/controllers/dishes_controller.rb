@@ -3,7 +3,7 @@ class DishesController < ApplicationController
   def new
     @dish = Dish.new
     @dish.courses.build
-    @day = Day.find(params[:id])
+    $day = Day.find(params[:id])
   end
 
   def edit
@@ -24,8 +24,6 @@ class DishesController < ApplicationController
     if @dish.save
       redirect_to '/dashboard'
     else
-      @dish.courses.build
-      @day = Day.find(params[:id])
       render :new
     end
   end
