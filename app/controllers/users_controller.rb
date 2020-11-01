@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       session[:order_id] = @user.id
       redirect_to '/profile'
     else
-      redirect_to root_path
+      render :new
     end
   end
 
