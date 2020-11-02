@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'users#new', as: :root
   resources :users
-  get '/login' => 'sessions#new'
+  get '/login' => 'sessions#new', as: :user_login
   post '/login' => 'sessions#create'
   delete '/login' => 'sessions#destroy', as: :user_logout
   get '/profile' => 'users#show', as: :profile_dir

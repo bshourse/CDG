@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       session[:order_id] = @user.id
-      redirect_to '/profile'
+      redirect_to '/profile', success: "You have signed in!"
     else
-      redirect_to '/login'
+      redirect_to user_login_path, danger: "Invalid email or password"
     end
   end
 

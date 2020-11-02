@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       session[:order_id] = @user.id
-      redirect_to '/profile'
+      redirect_to '/profile', success: "You have successfully registered in the system!"
     else
       render :new
     end
