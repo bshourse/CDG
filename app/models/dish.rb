@@ -2,7 +2,7 @@ class Dish < ApplicationRecord
   has_many :courses
   has_many :days, through: :courses
   has_many :order_items
-  validates :name, format: { with: /\A[a-zA-Z]+\z/, message: "allows only letters"  }
+  validates :name, format: { with: /\A[a-zA-Z ]+\z/, message: "allows only letters"  }
   validates :course_name, inclusion: {within: ['first course', 'main course', 'drink'], message: "should be: first course / main course or drink "}
   validates :price,
             :length => { in: 1..5, message: "is too long. Range of available values: 0-999.9 "   },
